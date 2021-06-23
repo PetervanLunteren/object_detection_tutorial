@@ -10,7 +10,8 @@ if current_dir == "object_detection_files":
     dest = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     files = os.listdir(src)
     for f in files:
-        shutil.move(os.path.join(src, f), dest)
+        if f.endswith('.py'):
+            shutil.move(os.path.join(src, f), dest)
 
 folder_to_be_separated = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images')
 prop_to_test = float(sys.argv[1])
