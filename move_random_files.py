@@ -4,7 +4,7 @@ import shutil
 from pathlib import Path
 import sys
 
-folder_to_be_separated = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'images')
+folder_to_be_separated = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images')
 prop_to_test = float(sys.argv[1])
 
 all_files_w_ext = [f for f in os.listdir(folder_to_be_separated)
@@ -30,12 +30,3 @@ for file in os.listdir(folder_to_be_separated):
         print(file, "moved to train")
         shutil.move(os.path.join(folder_to_be_separated, file),
                     os.path.join(folder_to_be_separated, 'train'))
-
-current_dir = os.path.basename(os.path.normpath(os.path.dirname(os.path.abspath(__file__))))
-if current_dir == "object_detection_files":
-    src = os.path.dirname(os.path.abspath(__file__))
-    dest = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    files = os.listdir(src)
-    for f in files:
-        if f.endswith('.py') and f != "move_random_files.py":
-            shutil.move(os.path.join(src, f), dest)
