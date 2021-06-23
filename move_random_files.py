@@ -4,8 +4,16 @@ import shutil
 from pathlib import Path
 import sys
 
+current_dir = os.path.basename(os.path.normpath(os.path.dirname(os.path.abspath(__file__))))
+if current_dir == "object_detection_files":
+    src = os.path.dirname(os.path.abspath(__file__))
+    dest = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    files = os.listdir(src)
+    for f in files:
+        shutil.move(os.path.join(src, f), dest)
+
 folder_to_be_separated = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images')
-prop_to_test = float("0.2") # float(sys.argv[1])
+prop_to_test = float(sys.argv[1])
 
 all_files_w_ext = [f for f in os.listdir(folder_to_be_separated)
                    if os.path.isfile(os.path.join(folder_to_be_separated, f)) and not f.endswith(".DS_Store")]
