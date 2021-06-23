@@ -17,7 +17,7 @@ all_classes = list(dict.fromkeys(all_classes))
 str_def = "def class_text_to_int(row_label):\n"
 str_pbtxt = ""
 for class_ in all_classes:
-    str_def += "   if row_label == '" + class_ + "':\n      return " + str(all_classes.index(class_) + 1) + "\n"
+    str_def += "    if row_label == '" + class_ + "':\n        return " + str(all_classes.index(class_) + 1) + "\n"
     str_pbtxt += "item {\n\tid: " + str(all_classes.index(class_) + 1) + "\n\tname: '" + class_ + "'\n}\n"
 
 print(str_def + "\n\n")
