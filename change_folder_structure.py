@@ -3,9 +3,10 @@ import shutil
 from pathlib import Path
 
 object_detection = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.rmdir(os.path.join(object_detection, "data"))
+shutil.rmtree(os.path.join(object_detection, "data"))
 Path(os.path.join(object_detection, 'training')).mkdir(parents=True, exist_ok=True)
 Path(os.path.join(object_detection, 'images')).mkdir(parents=True, exist_ok=True)
+Path(os.path.join(object_detection, 'data')).mkdir(parents=True, exist_ok=True)
 
 current_dir = os.path.basename(os.path.normpath(os.path.dirname(os.path.abspath(__file__))))
 if current_dir == "object_detection_files":
