@@ -4,7 +4,7 @@ import os
 def write_pbtxt(path, content):
     with open(str(path), 'a') as the_file:
         the_file.write(content)
-    print("pbtxt file writen to :", path)
+    print("pbtxt file writen to :", path, "\n")
 
 test_labels = pd.read_csv(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data", "test_labels.csv"))
 train_labels = pd.read_csv(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data", "train_labels.csv"))
@@ -20,7 +20,7 @@ for class_ in all_classes:
     str_def += "    if row_label == '" + class_ + "':\n        return " + str(all_classes.index(class_) + 1) + "\n"
     str_pbtxt += "item {\n\tid: " + str(all_classes.index(class_) + 1) + "\n\tname: '" + class_ + "'\n}\n"
 
-print(str_def + "\n\n")
+print("Part to be copy pasted into generate_tf_record.py:\n\n" + str_def)
 
 write_pbtxt(path_pbtxt_data, str_pbtxt)
 write_pbtxt(path_pbtxt_training, str_pbtxt)
