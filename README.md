@@ -1,4 +1,3 @@
-# object detection files
-Here are some files listed which are useful when training an algorithm to recognise objects in images.
+# Train your own object detection model - machine learning for dummies
 
-Manual and terminal commands will follow soon.
+In progress - content will will be available soon.
