@@ -36,17 +36,17 @@ FLAGS = flags.FLAGS
 
 # replace row_label with the name you annotated your images as
 def class_text_to_int(row_label):
-    if row_label == 'four':
+    if row_label == 'five':
         return 1
-    if row_label == 'two':
+    if row_label == 'four':
         return 2
     if row_label == 'one':
         return 3
-    if row_label == 'three':
-        return 4
-    if row_label == 'five':
-        return 5
     if row_label == 'six':
+        return 4
+    if row_label == 'three':
+        return 5
+    if row_label == 'two':
         return 6
 
 

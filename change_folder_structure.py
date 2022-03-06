@@ -25,7 +25,7 @@ Path(os.path.join(object_detection, 'images')).mkdir(parents=True, exist_ok=True
 print("\nFolder 'images' created :", os.path.join(object_detection, 'images'))
 
 Path(os.path.join(object_detection, 'exported_model')).mkdir(parents=True, exist_ok=True)
-print("\nFolder 'exported_model' created :", os.path.join(object_detection, 'exported_model'))
+print("\nFolder 'exported_model' created :", os.path.join(object_detection, 'exported_model'), "\n")
 
 # remove py files
 current_dir = os.path.basename(os.path.normpath(os.path.dirname(os.path.abspath(__file__))))
