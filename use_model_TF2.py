@@ -64,7 +64,7 @@ for filename in os.listdir(image_directory):
 
         # print detections in terminal
         print(f"\nImage {PATH_TO_IMG} has {int(n_detections_above_thresh)} detection(s):")
-        i = 0
+        i = 1
         for detection in detections:
             conf = float(detection[5])
             detection_class = detection[4]
@@ -73,7 +73,7 @@ for filename in os.listdir(image_directory):
             ymax = detection[2]
             xmax = detection[3]
 
-            print(f"   Detection {i+1}:")
+            print(f"   Detection {i}:")
             print(f"      class        = {detection_class}")
             print(f"      confidence   = {round(conf, 3)}")
             print(f"      ymin         = {ymin}")
@@ -82,6 +82,7 @@ for filename in os.listdir(image_directory):
             print(f"      xmax         = {xmax}")
             print(f"      image height = {height}")
             print(f"      image width  = {width}\n")
+            i += 1
 
             # fill list with csv content
             if export_csv:

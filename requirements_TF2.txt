@@ -56,6 +56,7 @@ keras==2.8.0
 Keras-Preprocessing==1.1.2
 kiwisolver==1.3.2
 libclang==13.0.0
+libs==0.0.10
 lvis==0.5.3
 lxml==4.8.0
 Markdown==3.3.6
@@ -96,6 +97,9 @@ pycocotools==2.0.4
 pycparser==2.21
 Pygments==2.11.2
 pyparsing==3.0.7
+PyQt5==5.15.6
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.9.1
 pyrsistent==0.18.1
 python-dateutil==2.8.2
 python-slugify==6.1.1
@@ -114,11 +118,13 @@ scipy==1.7.3
 Send2Trash==1.8.0
 sentencepiece==0.1.96
 seqeval==1.2.2
+sip==6.5.1
 six==1.16.0
 tabulate==0.8.9
 tensorboard==2.8.0
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
+tensorflow==2.8.0
 tensorflow-addons==0.16.1
 tensorflow-datasets==4.5.2
 tensorflow-hub==0.12.0
@@ -135,6 +141,7 @@ tf-estimator-nightly==2.8.0.dev2021122109
 tf-models-official==2.8.0
 tf-slim==1.1.0
 threadpoolctl==3.1.0
+toml==0.10.2
 tornado==6.1
 tqdm==4.63.0
 traitlets==5.1.1
