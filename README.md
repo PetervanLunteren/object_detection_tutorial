@@ -64,9 +64,9 @@ cd ..
 ```
 
 ## Step 4: Copy images
-Now you can place the images you want to use for the training in the `images` directory. I've prepared some images of dice-rolls if you don't have images yourself and just want to follow along with this tutorial. You can find them in `object_detection_tutorial/images_and_labels`. 
+Now you can place the images you want to use for the training in the `images` directory. I've prepared some images of dice-rolls if you don't have images yourself and just want to follow along with this tutorial. You can find them in `object_detection_tutorial/images_and_labels/images`. 
 
-After all these steps your tree will look like this:
+After all these steps your folder will look like this:
 ```
 object_detection
 	|--- data
@@ -80,7 +80,11 @@ object_detection
 ```
 
 ## Step 5: Label images
- 
+For training it is important that the computer knows what to find on the images, and where they can find it. That's why we accompany every image with an xml file. Labeling your images is definately the most boring part of creating your own object detection model. You can use the handy <a href="https://github.com/tzutalin/labelImg">labelImg</a> program for this.
+
+If your using the dice-roll dataset, I've already labelled it for you: `object_detection_tutorial/images_and_labels/labels`. Copy-paste this to the `images` directory.
+
+If you want to use the labelImg program, execute the following commands. Here we clone the labelImg repo, compile it, and open it with the paths automatically set.
 ```batch
 cd ..
 git clone https://github.com/tzutalin/labelImg
@@ -92,6 +96,21 @@ PATH_TO_CLASSES=$PATH_TO_CONDA_DIR/envs/ObjectDetectionTutorial_TF2/lib/python3.
 python labelImg.py "$PATH_TO_IMG_DIR" "$PATH_TO_CLASSES" "$PATH_TO_IMG_DIR"
 cd ..
 cd object_detection
+```
+After all these steps your folder will look something like this:
+```
+object_detection
+	|--- data
+	|--- training
+	|--- images
+	|	|--- image1.jpg
+	|	|--- image1.xml
+	|	|--- image2.jpg
+	|	|--- image2.xml
+	|	|--- image3.jpg
+	|	|--- image3.xml
+	|	|--- …
+	|--- …
 ```
 
 ### Step 6: Separate test and train images
@@ -137,4 +156,4 @@ python use_model_TF2.py --image_directory "$PATH_TO_CONDA_DIR/envs/ObjectDetecti
 ```
 
 ## Want to start over?
-If something happened and you want to start over, just execute `conda env remove --name ObjectDetectionTutorial_TF2` in a new terminal window. Then you can start at step 1 again.
+If something happened and you want to start over, just execute `conda env remove --name ObjectDetectionTutorial_TF2` in a new terminal window. Then you can start again at step 1.
