@@ -56,7 +56,7 @@ python builders/model_builder_test.py
 If the there is no error message, you're ready to go.
 
 ## Step 3: Change folder structure
-Here we execute a python script which creates the directories 'training', 'images', and 'exported_model'. 
+Here we execute a python script which creates the directories 'training', 'images', and 'exported_model'. It also places all the other python scripts I've written for this tutorial in the 'object_detection' directory.
 ```batch
 cd object_detection_tutorial
 python change_folder_structure.py
