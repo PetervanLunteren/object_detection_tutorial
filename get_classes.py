@@ -22,6 +22,7 @@ path_pbtxt_data = os.path.join(os.path.dirname(os.path.realpath(__file__)), "dat
 # read unique classes
 all_classes = list(test_labels['class']) + list(train_labels['class'])
 all_classes = list(dict.fromkeys(all_classes))
+all_classes = sorted(all_classes)
 
 # print to terminal and pbtxt file
 str_def = "def class_text_to_int(row_label):\n"
