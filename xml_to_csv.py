@@ -1,9 +1,14 @@
+# Script taken from https://github.com/datitran/raccoon_dataset (datitran) and slightly
+# adjusted by Peter van Lunteren on 6 march 2022 to fit the object detection tutorial
+# https://github.com/PetervanLunteren/object_detection_tutorial.
+
+# This script takes the xml files in 'test' and 'train' dirs and compiles it to
+# 'train_labels.csv' and 'test_labels.csv'.
+
 import os
 import glob
 import pandas as pd
 import xml.etree.ElementTree as ET
-
-# taken from https://github.com/datitran/raccoon_dataset and slightly adjusted
 
 def xml_to_csv(path):
     xml_list = []
@@ -26,7 +31,7 @@ def xml_to_csv(path):
     return xml_df
 
 
-def main(): # this is the part we change to work with our setup
+def main():
     for directory in ['train','test']:
         image_path = os.path.join(os.getcwd(), 'images/{}'.format(directory))
         xml_df = xml_to_csv(image_path)
