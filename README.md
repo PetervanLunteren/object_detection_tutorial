@@ -75,7 +75,7 @@ python generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/
 ```batch
 pmset noidle &
 PMSETPID=$!
-python3 model_main_tf2.py --train_dir=training/ --pipeline_config_path=data/pipeline.config --model_dir=training/ –logtostderr
+python3 model_main_tf2.py --train_dir=training/ --pipeline_config_path=data/pipeline.config --model_dir=training/ –logtostderr --num_train_steps=200000
 kill $PMSETPID
 ```
 
