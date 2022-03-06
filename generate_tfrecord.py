@@ -1,8 +1,8 @@
-# Script taken from https://github.com/datitran/raccoon_dataset (datitran) and slightly
-# adjusted by Peter van Lunteren on 6 march 2022 to fit the object detection tutorial
-# https://github.com/PetervanLunteren/object_detection_tutorial.
+# Script taken from https://github.com/datitran/raccoon_dataset (datitran) and adjusted by Peter van Lunteren on 6
+# march 2022 to automatically set class_text_to_int so that no user input is needed.
+# Part of the object detection tutorial https://github.com/PetervanLunteren/object_detection_tutorial
 
-# This script creates 'train.record' and 'test.record' from csv files.
+# This script creates 'train.record', 'test.record' and automatically sets class_text_to_int from csv files.
 
 """
 Usage:
@@ -33,21 +33,19 @@ flags.DEFINE_string('output_path', '', 'Path to output TFRecord')
 flags.DEFINE_string('image_dir', '', 'Path to images')
 FLAGS = flags.FLAGS
 
+# set for the folder structure of the object detection tutorial
+# https://github.com/PetervanLunteren/object_detection_tutorial
+test_labels = pd.read_csv(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data", "test_labels.csv"))
+train_labels = pd.read_csv(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data", "train_labels.csv"))
 
-# replace row_label with the name you annotated your images as
+
+# get classes from csv files, sort them and put them in a dict
 def class_text_to_int(row_label):
-    if row_label == 'five':
-        return 1
-    if row_label == 'four':
-        return 2
-    if row_label == 'one':
-        return 3
-    if row_label == 'six':
-        return 4
-    if row_label == 'three':
-        return 5
-    if row_label == 'two':
-        return 6
+    global test_labels
+    global train_labels
+    all_classes = sorted(list(dict.fromkeys(list(test_labels['class']) + list(train_labels['class']))))
+    classes_dict = {all_classes[i]: i + 1 for i in range(0, len(all_classes))}
+    return classes_dict[row_label]
 
 
 def split(df, group):
