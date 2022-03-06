@@ -16,16 +16,16 @@ object_detection = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 shutil.rmtree(os.path.join(object_detection, "data"))
 Path(os.path.join(object_detection, 'data')).mkdir(parents=True, exist_ok=True)
-print("Contents of folder 'data' removed :", os.path.join(object_detection, "data"))
+print("\nContents of folder 'data' removed :", os.path.join(object_detection, "data"))
 
 Path(os.path.join(object_detection, 'training')).mkdir(parents=True, exist_ok=True)
-print("Folder 'training' created :", os.path.join(object_detection, 'training'))
+print("\nFolder 'training' created :", os.path.join(object_detection, 'training'))
 
 Path(os.path.join(object_detection, 'images')).mkdir(parents=True, exist_ok=True)
-print("Folder 'images' created :", os.path.join(object_detection, 'images'))
+print("\nFolder 'images' created :", os.path.join(object_detection, 'images'))
 
 Path(os.path.join(object_detection, 'exported_model')).mkdir(parents=True, exist_ok=True)
-print("Folder 'exported_model' created :", os.path.join(object_detection, 'exported_model'))
+print("\nFolder 'exported_model' created :", os.path.join(object_detection, 'exported_model'))
 
 # remove py files
 current_dir = os.path.basename(os.path.normpath(os.path.dirname(os.path.abspath(__file__))))
