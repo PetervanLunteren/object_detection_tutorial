@@ -64,8 +64,23 @@ cd ..
 ```
 
 ## Step 4: Copy images
+Now you can place the images you want to use for the training in the `images` directory. I've prepared some images of dice-rolls if you don't have images yourself and just want to follow along with this tutorial. You can find them in `object_detection_tutorial/images_and_labels`. 
+
+After all these steps your tree will look like this:
+```
+object_detection
+	|--- data
+	|--- training
+	|--- images
+	|	|--- image1.jpg
+	|	|--- image2.jpg
+	|	|--- image3.jpg
+	|	|--- …
+	|--- …
+```
 
 ## Step 5: Label images
+ 
 ```batch
 cd ..
 git clone https://github.com/tzutalin/labelImg
