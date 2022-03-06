@@ -5,34 +5,58 @@ This is a tutorial which makes it easy for everybody to train their own custom m
 First of all you'll need to install [Anaconda](https://www.anaconda.com/products/individual). Need help? Follow [these steps](https://docs.anaconda.com/anaconda/install/mac-os/). Anaconda allows you to create environments in which you can install certain versions of packages, so that there won't be any version errors along the way.
 
 ## Step 1: Installation (just once)
-We will first create an environment in which we'll work during this tutorial. We'll install `python 3.7` and `tensorflow 2.8.0`, then 
+In this step we'll install all neccesary packages and repositories. You only have to complete this step once. First, I'll create an environment in which we'll work during this tutorial. Open a new window in the Terminal application and enter the following commands.
 ```batch
 conda create -n ObjectDetectionTutorial_TF2 python==3.7 -y
 conda activate ObjectDetectionTutorial_TF2
+```
+Then I install tensorflow and protobuf inside this environment.
+```batch
 pip install tensorflow==2.8.0
-conda install -c anaconda protobuf -y
+conda install -c anaconda protobuf==3.19.4 -y
+```
+The following command finds the path to your anaconda directory - which we will change directory into to download repositories. 
+```batch
 PATH_TO_CONDA_DIR=`conda info | grep 'base environment' | cut -d ':' -f 2 | xargs | cut -d ' ' -f 1`
 cd "$PATH_TO_CONDA_DIR/envs/ObjectDetectionTutorial_TF2/lib/python3.7/site-packages/tensorflow"
+```
+Download the `models` repo from Tensorflow and my own repo with scripts and files we'll need further on. As you can see I `checkout` the `models` repo. That means I use a specific version, because I don't know what is going to happen with that repo after I publish this tutorial. I know that this combination works.
+```batch
 git clone https://github.com/tensorflow/models.git
 cd models
 git checkout c9ae0d833800f90d828a51f0be47ac4a083165bc
 cd research/object_detection
 git clone https://github.com/PetervanLunteren/object_detection_tutorial
-pip install -r object_detection_tutorial/requirements_TF2.txt
 ```
+Now we only have to install the rest of the packages using the `requirements_TF2.txt` file and exit the window.
+```batch
+pip install -r object_detection_tutorial/requirements_TF2.txt
+exit
+```
+You can now close the window. For the next steps we'll use a new window.
+
 
 ## Step 2: Start-up (every time you start again)
+Now that the installation is completed, you only have to start up your environment every time you want to access it. Here we activate and change directory.
 ```batch
 conda activate ObjectDetectionTutorial_TF2
 PATH_TO_CONDA_DIR=`conda info | grep 'base environment' | cut -d ':' -f 2 | xargs | cut -d ' ' -f 1`
 cd "$PATH_TO_CONDA_DIR/envs/ObjectDetectionTutorial_TF2/lib/python3.7/site-packages/tensorflow/models/research"
+```
+Execute the protobuf compile and set `PYTHONPATH`.
+```batch
 protoc object_detection/protos/*.proto --python_out=.
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+```
+Change directory and test if everything is set.
+```batch
 cd object_detection
 python builders/model_builder_test.py
 ```
+If the there is no error message, you're ready to go.
 
 ## Step 3: Change folder structure
+Here we execute a python script which creates the directories 'training', 'images', and 'exported_model'. 
 ```batch
 cd object_detection_tutorial
 python change_folder_structure.py
@@ -96,3 +120,6 @@ python exporter_main_v2.py --input_type image_tensor --pipeline_config_path data
 ```batch
 python use_model_TF2.py --image_directory "$PATH_TO_CONDA_DIR/envs/ObjectDetectionTutorial_TF2/lib/python3.7/site-packages/tensorflow/models/research/object_detection/object_detection_tutorial/new_images_to_test" --threshold 0.8
 ```
+
+## Want to start over?
+If something happened and you want to start over, just execute `conda env remove --name ObjectDetectionTutorial_TF2` in a new terminal window. Then you can start at step 1 again.
