@@ -97,7 +97,7 @@ python labelImg.py "$PATH_TO_IMG_DIR" "$PATH_TO_CLASSES" "$PATH_TO_IMG_DIR"
 cd ..
 cd object_detection
 ```
-After all these steps your folder will look something like this:
+After all these steps your folder will look like this:
 ```
 object_detection
 	|--- data
@@ -114,11 +114,13 @@ object_detection
 ```
 
 ### Step 6: Separate test and train images
+We need to seperate the images in a train and test set. We'll use 90% of the images for training and 10% for testing. The following command executes a python file which will create the directories `train` and `test` and randomly choose 10% of the images and its corresponding xml files to move to `test` (and the rest to `train`). If you want a different proportion, just change the `--proportion_to_test` argument. 
 ```batch
-python move_random_files.py --prop_to_test 0.2
+python move_random_files.py --prop_to_test=0.1
 ```
 
 ## Step 7: Create required files
+In this step we'll generate some files required for training. First we'll use all the label files to create a .csv file for train and test. Then we'll execute `get_classes.py` which will read these .csv's and write a .pbtxt file inside the `data` folder. A .pbtxt file is nothing more than a text file stating how the computer can convert the classes to integers. Lastly, we'll create TFRecords (Tensorflow's own binary storage format) for the train- and testset.  
 ```batch
 python xml_to_csv.py
 python get_classes.py
@@ -127,7 +129,7 @@ python generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/
 ```
 
 ## Step 8: Download model
-
+Here in this step you will choose a model from the [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Here you can pick one that is suitable for you data and purpose. There are accurate models which are slow and complex (like the Faster R-CNN Inception models), but also quick and light models like the SSD MobileNet. Have a look, it's like a menu. Since recognising the number of black dots on a white die is not too complicated, for this tutorial we'll use the `SSD MobileNet V2 FPNLite 320x320` model. If you're training something more complicated, you can choose a more complex model. Download the model and untar the 
 
 ## Step 9: Adjust .config file
 
