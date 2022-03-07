@@ -120,7 +120,7 @@ python move_random_files.py --prop_to_test=0.1
 ```
 
 ## Step 7: Create required files
-In this step we'll generate some files required for training. First we'll use all the label files to create a .csv file for train and test. Then we'll execute `get_classes.py` which will read these .csv's and write a .pbtxt file inside the `data` folder. A .pbtxt file is nothing more than a text file stating how the computer can convert the classes to integers. Lastly, we'll create TFRecords (Tensorflow's own binary storage format) for the train- and testset.  
+In this step we'll generate some files required for training. First we'll use all the label files to create a `.csv` file for train and test. Then we'll execute `get_classes.py` which will read these `.csv`'s and write a `.pbtxt` file inside the `data` folder. A `.pbtxt` file is nothing more than a text file stating how the computer can convert the classes to integers. Lastly, we'll create TFRecords (tensorflow's own binary storage format) for the train- and testset.  
 ```batch
 python xml_to_csv.py
 python get_classes.py
@@ -129,7 +129,7 @@ python generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/
 ```
 
 ## Step 8: Download model
-Here in this step you will choose a model from the [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Here you can pick one that is suitable for you data and purpose. There are accurate models which are slow and complex (like the Faster R-CNN Inception models), but also quick and light models like the SSD MobileNet. Have a look, it's like a menu. Since recognising the number of black dots on a white die is not too complicated, for this tutorial we'll use the `SSD MobileNet V2 FPNLite 320x320` model. If you're training something more complicated, you can choose a more complex model. Download the model and untar the 
+Here in this step you will choose a model from the [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Here you can pick one that is suitable for you data and purpose. There are accurate models which are slow and complex (like the Faster R-CNN Inception models), but also quick and light models like the SSD MobileNet. Have a look, it's like a menu. Since recognising the number of black dots on a white die is not too complicated, for this tutorial we'll use the `SSD MobileNet V2 FPNLite 320x320` model. If you're training something more complicated, you can choose a more complex model. Download the model and untar the `.tar` file.
 
 ## Step 9: Adjust .config file
 
