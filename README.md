@@ -129,10 +129,40 @@ python generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/
 ```
 
 ## Step 8: Download model
-Here in this step you will choose a model from the [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Here you can pick one that is suitable for you data and purpose. There are accurate models which are slow and complex (like the Faster R-CNN Inception models), but also quick and light models like the SSD MobileNet. Have a look, it's like a menu. Since recognising the number of black dots on a white die is not too complicated, for this tutorial we'll use the `SSD MobileNet V2 FPNLite 320x320` model. If you're training something more complicated, you can choose a more complex model. Download the model and untar the `.tar` file.
+Here in this step you will choose a model from the [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Here you can pick one that is suitable for your data and purpose. There are accurate models which are slow and complex (like the Faster R-CNN Inception models), but also quick and light models like the SSD MobileNet. Have a look - it's like a menu. Since recognising the number of black dots on a white dice is not too complicated, for this tutorial we'll use the `SSD MobileNet V2 FPNLite 320x320` model. If you're training something more complicated, you can choose a more complex model. Download the desired model and untar the `.tar` file.
 
 ## Step 9: Adjust .config file
+In this step we will adjust the `.config` file with the appropriate parameter settings and place it in the correct location. First place the model folder (for example `ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8`) in the `object_detection` directory. Then open the `pipeline.config` file inside this model directory and adjust the following parameters:
+```
+num_classes: 6
+batch_size: 4
 
+fine_tune_checkpoint: "ssd_mobilenet_v2_320x320_coco17_tpu-8/checkpoint/ckpt-0"
+fine_tune_checkpoint_type: "detection"
+
+train_input_reader {
+  label_map_path: "data/object_detection.pbtxt"
+  tf_record_input_reader {
+    input_path: "data/train.record"
+  }
+}
+
+eval_input_reader {
+  label_map_path: "data/object_detection.pbtxt"
+  shuffle: false
+  num_epochs: 1
+  tf_record_input_reader {
+    input_path: "data/test.record"
+  }
+ }
+```
+- Please note that, if your training your own custom model, you should change the `num_classes` to the number of classes you are training for. In my case there are 6 classes: 'one', 'two', 'tree', 'four', 'five' and 'six' dots.
+- Using a larger `batch_size` decreases the quality of the model, as measured by its ability to generalize. However, a `batch_size` too small has the risk of making learning too stochastic. Either way, the higher the batch size, the more memory space you’ll need so it depends on your local machine what you can handle. For this tutorial I choose a `batch_size` of 4 because you then won't need a powerfull computer to run it.
+- Please specify the `fine_tune_checkpoint` as `"<your_model_name>/checkpoint/ckpt-0"`.
+- Change the `fine_tune_checkpoint_type` to `"detection"`.
+- Use the above `label_map_path`s and `input_path`s for the `train_input_reader` and the `eval_input_reader`.
+
+If you're using the `ssd_mobilenet_v2_320x320_coco17_tpu-8` model and are training on the dice-roll dataset, you can find a pre-filled `.config` file in the `object_detection_tutorial` directory.
 
 ## Step 10: Train
 ```batch
