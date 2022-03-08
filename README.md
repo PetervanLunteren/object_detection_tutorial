@@ -188,4 +188,4 @@ python use_model_TF2.py --image_directory "$PATH_TO_CONDA_DIR/envs/ObjectDetecti
 ```
 
 ## Want to start over?
-If something happened and you want to start over, just execute `conda env remove --name ObjectDetectionTutorial_TF2` in a new terminal window. Then you can start again at step 1.
+If something went wrong and you want to start over, just execute `conda env remove --name ObjectDetectionTutorial_TF2` in a new terminal window. Then you can start again at step 1. Be careful though, this will delete the entire `ObjectDetectionTutorial_TF2` folder. So make sure you have copies of all the required files, such as your training images and labels. 
