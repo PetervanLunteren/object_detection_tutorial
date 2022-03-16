@@ -129,10 +129,10 @@ python generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/
 ```
 
 ## Step 8: Download model
-Here in this step you will choose a model from the [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Here you can pick one that is suitable for your data and purpose. There are accurate models which are slow and complex (like the Faster R-CNN Inception models), but also quick and light models like the SSD MobileNet. Have a look - it's like a menu. Since recognising the number of black dots on a white dice is not too complicated, for this tutorial we'll use the `SSD MobileNet V2 FPNLite 320x320` model. If you're training something more complicated, you can choose a more complex model. Download the desired model and untar the `.tar` file. It will unpack to the folder which I will call the model folder for the rest of this tutorial. Each model will result in a different model folder. For example, if you downloaded the `SSD MobileNet V2 FPNLite 320x320` model, the model folder will be `ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8`). Now place this model folder in the `object_detection` directory.
+Here in this step you will choose a model from the [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). Here you can pick one that is suitable for your data and purpose. There are accurate models which are slow and complex (like the Faster R-CNN Inception models), but also quick and light models like the SSD MobileNet. Have a look - it's like a menu. Since recognising the number of black dots on a white dice is not too complicated, for this tutorial we'll use the `SSD MobileNet V2 FPNLite 320x320` model. If you're training something more complicated, you can choose a more complex model. Download the desired model and untar the `.tar` file. It will unpack to the folder which I will call the model folder for the rest of this tutorial. Each model will result in a different model folder. For example, if you downloaded the `SSD MobileNet V2 FPNLite 320x320` model, the model folder will be `ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8`. Now place this model folder in the `object_detection` directory.
 
 ## Step 9: Adjust .config file
-In this step we will adjust the `.config` file with the appropriate parameter settings and place it in the correct location. Please note that if you're using the `ssd_mobilenet_v2_320x320_coco17_tpu-8` model and are training on the dice-roll dataset, there is already a pre-filled `.config` file on the correct location, so you can simply skip this step. For those who are training their custom model: open the `pipeline.config` file inside the model folder and adjust the following parameters.
+In this step we will adjust the `.config` file with the appropriate parameter settings and place it in the correct location. Please note that if you're using the `ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8` model and are training on the dice-roll dataset, there is already a pre-filled `.config` file on the correct location, so you can simply skip this step. For those who are training their custom model: open the `pipeline.config` file inside the model folder and adjust the following parameters.
 
 Number of classes. You should change the `num_classes` to the number of classes you are training for. In my case there are 6 classes: 'one', 'two', 'tree', 'four', 'five' and 'six' dots.
 ```
@@ -146,7 +146,7 @@ batch_size: 4
 
 Fine tune checkpoint. Specify the `fine_tune_checkpoint` as `"<model_folder>/checkpoint/ckpt-0"`. For example:
 ```
-fine_tune_checkpoint: "ssd_mobilenet_v2_320x320_coco17_tpu-8/checkpoint/ckpt-0"
+fine_tune_checkpoint: "ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8/checkpoint/ckpt-0"
 ```
 
 Fine tune checkpoint type. Change the `fine_tune_checkpoint_type` to `"detection"`.
