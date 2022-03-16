@@ -13,7 +13,7 @@ conda activate ObjectDetectionTutorial_TF2
 Then I install tensorflow and protobuf inside this environment.
 ```batch
 pip install tensorflow==2.8.0
-conda install -c anaconda protobuf==3.19.4 -y
+conda install -c anaconda protobuf=3.19.4 -y
 ```
 The following command finds the path to your anaconda directory - which we will change directory into to download repositories. 
 ```batch
