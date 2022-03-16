@@ -169,12 +169,40 @@ input_path: "data/test.record"
 The rest of the parameters are good to go - you don't need to change them. Now copy and place this `pipeline.config` file to your `data` directory. My pre-filled one is also there, so you can replace it. 
 
 ## Step 10: Train
+It's finally time to train! You can do that with the following command. Here we'll train for 200.000 steps, but you're free to change the `--num_train_steps` to whatever you want. Please note that the `pmset` command disables your computer to sleep and will be automatically lifted after the training is completed. However, for this it's important that you execute these 4 commands in one go.  
 ```batch
 pmset noidle &
 PMSETPID=$!
 python3 model_main_tf2.py --train_dir=training/ --pipeline_config_path=data/pipeline.config --model_dir=training/ –logtostderr --num_train_steps=200000
 kill $PMSETPID
 ```
+
+It'll print many lines - most of which you can ignore. You'll probably see `Use fn_output_signature instead` for a while. Please be patient. This can hold for a few minutes. If you see somthing like below the training has started!
+```
+INFO:tensorflow:{'Loss/classification_loss': 0.80173784,
+ 'Loss/localization_loss': 0.62153286,
+ 'Loss/regularization_loss': 0.15319578,
+ 'Loss/total_loss': 1.5764666,
+ 'learning_rate': 0.0319994}
+I0316 17:16:21.804826 4532760000 model_lib_v2.py:708] {'Loss/classification_loss': 0.80173784,
+ 'Loss/localization_loss': 0.62153286,
+ 'Loss/regularization_loss': 0.15319578,
+ 'Loss/total_loss': 1.5764666,
+ 'learning_rate': 0.0319994}
+INFO:tensorflow:Step 200 per-step time 3.216s
+I0316 17:21:43.447596 4532760000 model_lib_v2.py:707] Step 200 per-step time 3.216s
+INFO:tensorflow:{'Loss/classification_loss': 0.53597915,
+ 'Loss/localization_loss': 0.42327553,
+ 'Loss/regularization_loss': 0.15312059,
+ 'Loss/total_loss': 1.1123753,
+ 'learning_rate': 0.0373328}
+I0316 17:21:43.447819 4532760000 model_lib_v2.py:708] {'Loss/classification_loss': 0.53597915,
+ 'Loss/localization_loss': 0.42327553,
+ 'Loss/regularization_loss': 0.15312059,
+ 'Loss/total_loss': 1.1123753,
+ 'learning_rate': 0.0373328}
+```
+
 
 ## Step 11: Evaluate
 ```batch
