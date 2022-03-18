@@ -216,7 +216,7 @@ python exporter_main_v2.py --input_type image_tensor --pipeline_config_path data
 
 ## Step 13: Use model
 ```batch
-python use_model_TF2.py --image_directory "$PATH_TO_CONDA_DIR/envs/ObjectDetectionTutorial_TF2/lib/python3.7/site-packages/tensorflow/models/research/object_detection/object_detection_tutorial/new_images_to_test" --threshold 0.8
+python use_model_TF2.py --image_directory "$PATH_TO_CONDA_DIR/envs/ObjectDetectionTutorial_TF2/lib/python3.7/site-packages/tensorflow/models/research/object_detection/object_detection_tutorial/fresh_new_images" --threshold 0.8
 ```
 
 ## Want to start over?
