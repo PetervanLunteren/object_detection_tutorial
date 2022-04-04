@@ -33,7 +33,7 @@ Now we only have to install the rest of the packages using the `requirements_TF2
 pip install -r object_detection_tutorial/requirements_TF2.txt
 exit
 ```
-You can now close the window. For the next steps we'll use a new window.
+You can now close the terminal window. For the next steps we'll use a new window.
 
 
 ## Step 2: Start-up (every time you start again)
