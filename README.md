@@ -123,8 +123,6 @@ python move_random_files.py --prop_to_test=0.2
 In this step we'll generate some files required for training. First we'll use all the label files to create a `.csv` file for train and test. Then we'll execute `get_classes.py` which will read these `.csv`'s and write a `.pbtxt` file inside the `data` folder. A `.pbtxt` file is nothing more than a text file stating how the computer can convert the classes to integers. Lastly, we'll create TFRecords (tensorflow's own binary storage format) for the train- and testset.  
 ```batch
 python xml_to_csv.py
-python xml_to_csv.py --annot_dir=images/train/ --out_csv_path=data/train_labels.csv
-python xml_to_csv.py --annot_dir=images/test/ --out_csv_path=data/test_labels.csv
 python get_classes.py
 python generate_tfrecord.py --csv_input=data/train_labels.csv --output_path=data/train.record --image_dir=images/train/
 python generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/test.record --image_dir=images/test/
