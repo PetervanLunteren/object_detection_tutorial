@@ -174,7 +174,20 @@ It's finally time to train! You can do that with the following command. Here we'
 ```batch
 pmset noidle &
 PMSETPID=$!
-python3 model_main_tf2.py --train_dir=training/ --pipeline_config_path=data/pipeline.config --model_dir=training/ –logtostderr --num_train_steps=200000
+python3 model_main_tf2.py --train_dir=training/ --pipeline_config_path=data/pipeline.config --model_dir=training/ –logtostderr
+kill $PMSETPID
+```
+
+```
+pmset noidle &
+PMSETPID=$!
+python3 model_main_tf2.py \
+    --pipeline_config_path=data/pipeline.config \
+    --model_dir=training/ \
+    --alsologtostderr \
+    --num_train_steps=20000 \
+    --sample_1_of_n_eval_examples=1 \
+    --num_eval_steps=1000
 kill $PMSETPID
 ```
 
