@@ -146,7 +146,8 @@ batch_size: 4
 
 Fine tune checkpoint. Specify the `fine_tune_checkpoint` as `"<model_folder>/checkpoint/ckpt-0"`. For example:
 ```
-fine_tune_checkpoint: "ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8/checkpoint/ckpt-0"
+fine_tune_checkpoint: "ssd_mobilenet_v2_320x320_coco17_tpu-8/checkpoint/ckpt-0"
+fine_tune_checkpoint: "ssd_mobilenet_v2_320x320_coco17_tpu-8/checkpoint/ckpt-1"
 ```
 
 Fine tune checkpoint type. Change the `fine_tune_checkpoint_type` to `"detection"`.
