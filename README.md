@@ -178,6 +178,13 @@ python3 model_main_tf2.py --train_dir=training/ --pipeline_config_path=data/pipe
 kill $PMSETPID
 ```
 
+```batch
+pmset noidle &
+PMSETPID=$!
+python model_main_tf2.py --pipeline_config_path=data/pipeline.config --model_dir=training/ --alsologtostderr
+kill $PMSETPID
+```
+
 ```
 pmset noidle &
 PMSETPID=$!
