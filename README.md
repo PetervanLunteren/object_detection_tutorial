@@ -1,4 +1,8 @@
-# Machine learning for dummies - train and use your own object detection model in a few easy steps 
+# Machine learning for dummies - train and use your own object detection model in a few easy steps
+
+**THIS TUTORIAL IS WORK IN PROGRESS**
+
+
 This is a tutorial which makes it easy for everybody to train their own custom model to recogise objects in images. When I started with object detection models, I tried many toturials which generally ended up with some kind of error. I try to avoid that with this tutorial by automating as many steps as possible and working with an anaconda environment. For each step I will first explain what you need to do, then show you the commands to actually do it. For the sake of explanation I will train a model to detect the number of eyes on dice roll, but you can use this tutorial to train whatever you want with whatever model you want.
 
 ## Step 0: Prerequisites
