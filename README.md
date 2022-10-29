@@ -30,7 +30,7 @@ conda activate ObjectDetectionTutorial_TF2
 ```
 Then I install tensorflow and protobuf inside this environment.
 ```batch
-pip install tensorflow==2.8.0
+pip install tensorflow==2.9.2
 conda install -c anaconda protobuf=3.13.0.1 -y
 ```
 The following command finds the path to your anaconda directory - which we will change directory into to download repositories. 
@@ -103,7 +103,7 @@ osx)
   if sysctl machdep.cpu.brand_string | grep -q "Apple M1"; then
     echo "AVX is not supported on M1 Macs! Installing a version of TensorFlow compiled for M1 Macs..." 2>&1 | tee -a "$LOG_FILE"
     pip uninstall tensorflow -y
-    pip install https://github.com/spinalcordtoolbox/docker-tensorflow-builder/releases/download/v1.15.5-py3.7/tensorflow-1.15.0-py3-none-any.whl
+    pip install https://github.com/alessandro893/tensorflow-macos-no_avx/releases/download/v2.9.2/tensorflow-2.9.2-cp38-cp38-macosx_12_0_x86_64.whl
     pip freeze
   else
     echo "AVX is supported on this macOS machine. Keeping default TensorFlow..." 2>&1 | tee -a "$LOG_FILE"
