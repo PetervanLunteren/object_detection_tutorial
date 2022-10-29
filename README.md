@@ -14,7 +14,7 @@ source /users/m1/anaconda3/bin/activate
 ```
 Then try it:
 ```
-conda -h
+conda -V
 ```
 
 ## Step 1: Installation (just once)
