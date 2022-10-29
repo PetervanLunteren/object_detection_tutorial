@@ -8,6 +8,8 @@ This is a tutorial which makes it easy for everybody to train their own custom m
 ## Step 0: Prerequisites
 First of all you'll need to install [Anaconda](https://www.anaconda.com/products/individual). Need help? Follow [these steps](https://docs.anaconda.com/anaconda/install/mac-os/). Anaconda allows you to create environments in which you can install certain versions of packages, so that there won't be any version errors along the way.
 
+TO DO: add conda to path, or activate it every time you start
+
 ## Step 1: Installation (just once)
 In this step we'll install all neccesary packages and repositories. You only have to complete this step once. First, I'll create an environment in which we'll work during this tutorial. Open a new window in the Terminal application and enter the following commands.
 ```batch
