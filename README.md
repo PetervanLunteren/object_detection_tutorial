@@ -53,6 +53,65 @@ exit
 ```
 You can now close the terminal window. For the next steps we'll use a new window.
 
+```
+function fetch_os_type() {
+  echo "Checking OS type and version..." 2>&1 | tee -a "$LOG_FILE"
+  OSver="unknown"  # default value
+  uname_output="$(uname -a)"
+  echo "$uname_output" 2>&1 | tee -a "$LOG_FILE"
+  # macOS
+  if echo "$uname_output" | grep -i darwin >/dev/null 2>&1; then
+    # Fetch macOS version
+    sw_vers_output="$(sw_vers | grep -e ProductVersion)"
+    echo "$sw_vers_output" 2>&1 | tee -a "$LOG_FILE"
+    OSver="$(echo "$sw_vers_output" | cut -c 17-)"
+    macOSmajor="$(echo "$OSver" | cut -f 1 -d '.')"
+    macOSminor="$(echo "$OSver" | cut -f 2 -d '.')"
+    # Make sure OSver is supported
+    if [[ "${macOSmajor}" = 10 ]] && [[ "${macOSminor}" < "${MACOSSUPPORTED}" ]]; then
+      die "Sorry, this version of macOS (10.$macOSminor) is not supported. The minimum version is 10.$MACOSSUPPORTED." 2>&1 | tee -a "$LOG_FILE"
+    fi
+    # Fix for non-English Unicode systems on MAC
+    if [[ -z "${LC_ALL:-}" ]]; then
+      export LC_ALL=en_US.UTF-8
+    fi
+
+    if [[ -z "${LANG:-}" ]]; then
+      export LANG=en_US.UTF-8
+    fi
+    OS="osx"
+  # Linux
+  elif echo "$uname_output" | grep -i linux >/dev/null 2>&1; then
+    OS="linux"
+  else
+    die "Sorry, the installer only supports Linux and macOS, quitting installer" 2>&1 | tee -a "$LOG_FILE"
+  fi
+}
+fetch_os_type
+
+case $OS in
+linux*)
+  if ! lscpu | grep -q " avx "; then
+    echo "AVX is not supported by this CPU! Installing a version of TensorFlow compiled for older CPUs..." 2>&1 | tee -a "$LOG_FILE"
+    pip uninstall tensorflow -y
+    pip install https://github.com/spinalcordtoolbox/docker-tensorflow-builder/releases/download/v1.15.5-py3.7/tensorflow-1.15.5-cp37-cp37m-linux_x86_64.whl
+  else
+    echo "AVX is supported on this Linux machine. Keeping default TensorFlow..." 2>&1 | tee -a "$LOG_FILE"
+  fi
+  ;;
+osx)
+  if sysctl machdep.cpu.brand_string | grep -q "Apple M1"; then
+    echo "AVX is not supported on M1 Macs! Installing a version of TensorFlow compiled for M1 Macs..." 2>&1 | tee -a "$LOG_FILE"
+    pip uninstall tensorflow -y
+    pip install https://github.com/spinalcordtoolbox/docker-tensorflow-builder/releases/download/v1.15.5-py3.7/tensorflow-1.15.0-py3-none-any.whl
+    pip freeze
+  else
+    echo "AVX is supported on this macOS machine. Keeping default TensorFlow..." 2>&1 | tee -a "$LOG_FILE"
+  fi
+  ;;
+esac
+```
+
 
 ## Step 2: Start-up (every time you start again)
 Now that the installation is completed, you only have to start up your environment every time you want to access it. Here we activate and change directory.
