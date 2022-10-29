@@ -24,11 +24,15 @@ conda -V
 
 ## Step 1: Installation (just once)
 In this step we'll install all neccesary packages and repositories. You only have to complete this step once. First, I'll create an environment in which we'll work during this tutorial. Open a new window in the Terminal application and enter the following commands.
+EDITS: python was 3.7
+
 ```batch
-conda create -n ObjectDetectionTutorial_TF2 python==3.7 -y
+conda create -n ObjectDetectionTutorial_TF2 python==3.8 -y
 conda activate ObjectDetectionTutorial_TF2
 ```
 Then I install tensorflow and protobuf inside this environment.
+
+EDITS: tf was 2.8.0
 ```batch
 pip install tensorflow==2.9.2
 conda install -c anaconda protobuf=3.13.0.1 -y
