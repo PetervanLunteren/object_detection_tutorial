@@ -10,6 +10,11 @@ First of all you'll need to install [Anaconda](https://www.anaconda.com/products
 
 TO DO: add conda to path, or activate it every time you start
 ```
+conda -V
+```
+if output is something like `zsh: command not found: conda`, you'll have to tell your computer where to find anaconda. 
+
+```
 source /users/m1/anaconda3/bin/activate
 ```
 Then try it:
