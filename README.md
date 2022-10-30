@@ -1,5 +1,13 @@
 **THIS TUTORIAL IS WORK IN PROGRESS**
 
+TODO:
+- rename files (if they work)
+- imrpove path code blocks
+- set var for "$PATH_TO_CONDA_DIR/envs/ObjectDetectionTutorial_TF2/lib/python3.7/site-packages/tensorflow"
+- activate anaconda
+- write to txt file
+
+
 # ORIGINAL VERSION (APRIL):
 # Machine learning for dummies - train and use your own object detection model in a few easy steps 
 This is a tutorial which makes it easy for everybody to train their own custom model to recogise objects in images. When I started with object detection models, I tried many toturials which generally ended up with some kind of error. I try to avoid that with this tutorial by automating as many steps as possible and working with an anaconda environment. For each step I will first explain what you need to do, then show you the commands to actually do it. For the sake of explanation I will train a model to detect the number of eyes on dice roll, but you can use this tutorial to train whatever you want with whatever model you want.
@@ -226,7 +234,6 @@ I0316 17:21:43.447819 4532760000 model_lib_v2.py:708] {'Loss/classification_loss
  'Loss/total_loss': 1.1123753,
  'learning_rate': 0.0373328}
 ```
-
 
 ## Step 11: Evaluate
 ```batch
