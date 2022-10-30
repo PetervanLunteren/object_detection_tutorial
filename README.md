@@ -32,7 +32,7 @@ In this step we'll install all neccesary packages and repositories. You only hav
 EDITS: python was 3.7
 
 ```batch
-conda create -n ObjectDetectionTutorial_TF2 python==3.8 -y
+conda create -n ObjectDetectionTutorial_TF2 python==3.7 -y
 conda activate ObjectDetectionTutorial_TF2
 ```
 Then I install tensorflow and protobuf inside this environment.
