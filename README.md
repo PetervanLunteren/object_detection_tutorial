@@ -61,6 +61,11 @@ Execute the protobuf compile and set `PYTHONPATH`.
 protoc object_detection/protos/*.proto --python_out=.
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 ```
+
+```
+export PATH=$PATH:"$PATH_TO_CONDA_DIR/envs/ObjectDetectionTutorial_TF2/lib/python3.7/site-packages/tensorflow/models"
+```
+
 Change directory and test if everything is set.
 ```batch
 cd object_detection
