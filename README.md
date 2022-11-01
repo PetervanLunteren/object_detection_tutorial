@@ -7,6 +7,7 @@ TODO:
 - activate anaconda
 - write to txt file
 - bash: open up the folder in a finder window
+- change use_model.py to input model_path too
 
 
 # ORIGINAL VERSION (APRIL):
