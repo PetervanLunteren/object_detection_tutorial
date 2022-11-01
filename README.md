@@ -6,6 +6,7 @@ TODO:
 - set var for "$PATH_TO_CONDA_DIR/envs/ObjectDetectionTutorial_TF2/lib/python3.7/site-packages/tensorflow"
 - activate anaconda
 - write to txt file
+- bash: open up the folder in a finder window
 
 
 # ORIGINAL VERSION (APRIL):
